@@ -1,0 +1,13 @@
+{
+    "authors": [
+        {
+            "name": "Rafal Wesolowski",
+            "email": "wesolyy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "symfony/var-dumper": "*",
+        "jwilsson/spotify-web-api-php": "*"
+    }
+}
