@@ -16,6 +16,7 @@ $api = new SpotifyWebAPI\SpotifyWebAPI();
 if (isset($_GET['code'])) {
     $playlistName = trim($config['playlist_name']);
     $playlistId = false;
+
     $session->requestAccessToken($_GET['code']);
 
     file_put_contents(__DIR__ . '/../token.txt', $session->getRefreshToken());

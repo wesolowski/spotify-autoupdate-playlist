@@ -1,4 +1,6 @@
 {
+    "name"             : "wesolowski/spotify-api-connect",
+    "license"          : "MIT",
     "authors": [
         {
             "name": "Rafal Wesolowski",

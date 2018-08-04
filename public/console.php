@@ -61,14 +61,15 @@ if(!empty($songToDelete)) {
 
 /* Use internal libxml errors -- turn on in production, off for debugging */
 libxml_use_internal_errors(true);
+
 /* Createa a new DomDocument object */
 $dom = new DomDocument;
 /* Load the HTML */
-$dom->loadHTMLFile("http://www.eska.pl/2xgoraca20");
+$dom->loadHTMLFile("https://www.eska.pl/2xgoraca20");
 /* Create a new XPath object */
 $xpath = new DomXPath($dom);
 /* Query all <td> nodes containing specified class name */
-$nodes = $xpath->query('//div[@class="dane"]');
+$nodes = $xpath->query('//div[@class="single-hit__info"]');
 /* Set HTTP response header to plain text for debugging output */
 /* Traverse the DOMNodeList object to output each DomNode's nodeValue */
 
@@ -81,11 +82,12 @@ class Audio
 $infos = [];
 foreach ($nodes as $node) {
     $info = new Audio();
-
     $info->song = trim($node->getElementsByTagName('a')[0]->nodeValue);
     $info->artist = trim($node->getElementsByTagName('a')[1]->nodeValue);
     $infos[] = $info;
+    dump($info);
 }
+
 
 $tractIds = [];
 foreach ($infos as $info) {
@@ -95,7 +97,7 @@ foreach ($infos as $info) {
     }
 }
 
-dump($api->addUserPlaylistTracks($config['user'], $playlistId, $tractIds));
+$api->addUserPlaylistTracks($config['user'], $playlistId, $tractIds);
 
 
 
